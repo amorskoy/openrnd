@@ -1,0 +1,5 @@
+#!/bin/sh
+
+ssh -L4040:127.0.0.1:4040 -L9200:127.0.0.1:9200 -L9000:127.0.0.1:9000  -i /opt/sandbox/.vagrant/machines/default/virtualbox/private_key -p 2222 vagrant@127.0.0.1
+
+
