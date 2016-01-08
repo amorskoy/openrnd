@@ -1,29 +1,30 @@
-// A generic onclick callback function.
-function genericOnClick(info, tab) {
-  console.log("item " + info.menuItemId + " was clicked");
-  console.log("info: " + JSON.stringify(info));
-  console.log("tab: " + JSON.stringify(tab));
-
-
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', 'http://127.0.0.1:9000', true);
-  xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-
-  // send the collected data as JSON
-  xhr.send(JSON.stringify({url:info.pageUrl, text:info.selectionText}));
-
- xhr.onload = function () {
-    if(this.status != 200){
-	alert('Unable to send selection to Open R&D');
+function getSelectedNode()
+{
+    if (document.selection)
+	return document.selection.createRange().parentElement();
+    else
+    {
+	var selection = window.getSelection();
+	if (selection.rangeCount > 0)
+	    return selection.getRangeAt(0).startContainer.parentNode;
     }
-  }
 }
 
-// Create one test item for each context type.
-var context = "selection"
-var title = "Send to OpenRnD";
-var id = chrome.contextMenus.create({"title": title, "contexts":[context],
-                                       "onclick": genericOnClick});
-console.log("'" + context + "' item:" + id);
+function selectDOMParent(info, tab){
+    var sel = getSelectedNode();
+    var parent = sel
+    
+    var range = document.createRange();
+    range.selectNodeContents(parent);
+
+    var s = window.getSelection()
+    s.removeAllRanges();
+    s.addRange(range);
+}
 
 
+chrome.extension.onMessage.addListener(function (message, sender, callback) {
+    if (message.functiontoInvoke == "selectDOMParent") {
+        selectDOMParent();
+    }
+});
