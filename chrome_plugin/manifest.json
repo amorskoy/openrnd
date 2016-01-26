@@ -10,5 +10,19 @@
   "background": {
     "scripts": ["back.js"]
   },
+  "commands" : {
+      "select-parent": {
+          "suggested_key":{
+            "default": "Alt+Shift+Up"
+          },
+          "description" : "Select DOM parent"
+      },
+      "send-openrnd": {
+          "suggested_key":{
+            "default": "Alt+Shift+O"
+          },
+          "description" : "Send selection to Open RnD"
+      }
+  },
   "manifest_version": 2
 }
