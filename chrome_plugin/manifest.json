@@ -2,7 +2,7 @@
   "name": "Open RnD actions",
   "description": "Saves selection into Open R&D directory",
   "version": "1.0",
-  "permissions": [ "contextMenus", "http://127.0.0.1:9000/"],
+  "permissions": [ "contextMenus", "http://127.0.0.1:9009/"],
   "content_scripts" : [{
      "matches": ["http://*/*", "https://*/*"],
      "js" : ["openrnd.js"]

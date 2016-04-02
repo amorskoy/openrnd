@@ -3,7 +3,7 @@ from elasticsearch import Elasticsearch
 import SocketServer, SimpleHTTPServer
 import json,os,sys,csv,codecs, cStringIO
 
-PORT = 9000
+PORT = 9009
 csvPath = "/vagrant/es_work/openrnd.csv"
 
 class ServerHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):

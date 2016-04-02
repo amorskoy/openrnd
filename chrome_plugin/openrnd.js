@@ -25,7 +25,7 @@ function selectDOMParent(info, tab){
 
 function clickSend() {
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', 'http://127.0.0.1:9000', true);
+  xhr.open('POST', 'http://127.0.0.1:9009', true);
   xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 
   // send the collected data as JSON
